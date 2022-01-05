@@ -3,6 +3,8 @@ package jpabook.jpashop.domain;
 import javax.persistence.*;
 import java.util.*;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 public class Category extends BaseEntity {
 
@@ -14,7 +16,7 @@ public class Category extends BaseEntity {
     /**
      * Category 내에서 하위 카테고리가 있는 것을 표현한 부분 (parent, child)
      */
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "PARENT_ID")
     private Category parent;
 
